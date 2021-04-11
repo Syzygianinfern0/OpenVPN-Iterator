@@ -16,7 +16,7 @@ def main(**kwargs):
     with open(kwargs["creds"]) as file:
         content = file.read()
         for user_pass in content.split("\n"):
-            uname, pswd = user_pass.split(":")
+            uname, pswd = user_pass.split(":", 1)
             os.system(
                 "openvpn --config us8245.nordvpn.com.udp.ovpn "
                 "--route-noexec "
