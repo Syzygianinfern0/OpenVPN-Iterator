@@ -24,13 +24,28 @@ def main(**kwargs):
                 "--route-noexec "
                 f'--auth-user-pass <(echo -e "{uname}\n{pswd}") '
                 "--log ovpn.log --daemon",
-                shell=True, executable="/bin/bash"
+                shell=True,
+                executable="/bin/bash",
             )
             time.sleep(5)
             if "AUTH_FAILED" in open("ovpn.log").read():
                 print(colored(f"{uname}:{pswd} doesnt work", "red"))
             elif "PUSH_REPLY" in open("ovpn.log").read():
-                print(colored(f"{uname}:{pswd} works!", "green"))
+                subprocess.Popen(
+                    f"openvpn --config {kwargs['config']} "
+                    "--route-noexec "
+                    f'--auth-user-pass <(echo -e "{uname}\n{pswd}") '
+                    "--log ovpn.log --daemon",
+                    shell=True,
+                    executable="/bin/bash",
+                )
+                time.sleep(5)
+                if "AUTH_FAILED" in open("ovpn.log").read():
+                    print(colored(f"{uname}:{pswd} doesnt work", "red"))
+                elif "PUSH_REPLY" in open("ovpn.log").read():
+                    print(colored(f"{uname}:{pswd} works!", "green"))
+                else:
+                    print(colored(f"{uname}:{pswd} timeout!", "yellow"))
             else:
                 print(colored(f"{uname}:{pswd} timeout!", "yellow"))
 
