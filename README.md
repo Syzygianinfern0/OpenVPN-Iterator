@@ -5,7 +5,7 @@
 "Brute Force(?)" Credentials against an OpenVPN Config
 
 | **🚧 Disclaimer: This is not intended to be used, nor has been created for any malpractices 🚧** |
-|:-------------------:|
+|:------------------------------------------------------------------------------------------------:|
 
 ---
 
