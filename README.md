@@ -25,7 +25,7 @@ python main.py --config us8245.nordvpn.com.udp.ovpn --creds creds.txt
 ```
 
 ### Bash #️⃣
-This command requires `sudo` and if yo momma didn't raise no quitter you would run it. If it just hangs, it means it is connected (fite me or send a PR which I would gladly close cause you're a cheap shit anyways to use this repo in the first place 💩)
+This command requires `sudo` and if yo momma didn't raise no quitter you would run it. If it just hangs, it means it is connected (fite me or send a PR which I would gladly close cause you're a cheap shit anyways to use this repo in the first place 💩 /S)
 
 ```shell
 sudo ./main.sh us8245.nordvpn.com.udp.ovpn creds.txt
