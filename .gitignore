@@ -5,6 +5,7 @@
 # Credentials
 creds.txt
 *.ovpn
+ovpn/
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
